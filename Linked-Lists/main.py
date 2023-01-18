@@ -31,6 +31,7 @@ class LinkedList(object):
         Assume the first position is "1".
         Return "None" if position is not in the list."""
         
+        #Using the for loop took a step shorter
         current = self.head
         
         if self.head:
@@ -43,6 +44,7 @@ class LinkedList(object):
                       break
         return None
 
+        #Compared to the while loop though more comprehensible takes 1 more step.
         # current = self.head
         # i = 0
         # if self.head:

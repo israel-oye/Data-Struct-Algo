@@ -62,7 +62,19 @@ class LinkedList(object):
         Assume the first position is "1".
         Inserting at position 3 means between
         the 2nd and 3rd elements."""
-        pass
+        class InvalidPositionError(Exception):
+            ...
+
+        if (position - 1) == 0:
+            new_element.next = self.head
+            self.head = new_element
+        elif precedent := self.get_position(position - 1):
+            if antecedent := self.get_position(position):
+                new_element.next = antecedent
+            precedent.next = new_element
+        else:
+            raise InvalidPositionError("Invalid position.")
+        
     
     
     def delete(self, value):

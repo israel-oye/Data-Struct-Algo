@@ -68,10 +68,10 @@ class LinkedList(object):
         if (position - 1) == 0:
             new_element.next = self.head
             self.head = new_element
-        elif precedent := self.get_position(position - 1):
-            if antecedent := self.get_position(position):
-                new_element.next = antecedent
-            precedent.next = new_element
+        elif predecessor := self.get_position(position - 1):
+            if successor := self.get_position(position):
+                new_element.next = successor
+            predecessor.next = new_element
         else:
             raise InvalidPositionError("Invalid position.")
         
@@ -79,7 +79,30 @@ class LinkedList(object):
     
     def delete(self, value):
         """Delete the first node with a given value."""
-        pass
+        
+
+        if self.head:
+            current = self.head
+            
+            if current.value == value:
+                if successor := current.next:
+                    self.head = successor
+                current.next = None
+                del(current)
+            while current.next:
+                predecessor = current
+                current = current.next
+                if current.value == value:
+                    predecessor.next = current.next
+                    current.next = None
+                    del(current)
+                    break
+                else:
+                    continue
+        else:
+            print("Value does not exist")
+                
+        
 
 # Test cases
 # Set up some Elements

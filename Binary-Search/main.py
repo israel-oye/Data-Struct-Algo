@@ -20,6 +20,8 @@ def binary_search(array: list, start: int, end: int, target):
 
 print(binary_search(array=arr, start=start, end=end, target=target))
 
+
+
 #Alternative simpler implementation
 #Error prone though as an invalid target could make array go out of bound
 

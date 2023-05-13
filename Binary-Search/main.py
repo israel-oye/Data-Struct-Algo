@@ -8,9 +8,9 @@ target = 10
 def binary_search(array: list, start: int, end: int, target):
     if start > end:
         return False
-        
+
     mid_index = math.floor((start + end) / 2)
-    
+
     if array[mid_index] == target:
         return True
     elif array[mid_index] > target:
@@ -18,16 +18,17 @@ def binary_search(array: list, start: int, end: int, target):
     else:
         return binary_search(array, mid_index + 1, end, target)
 
-print(binary_search(array=arr, start=start, end=end, target=target))
+# print(binary_search(array=arr, start=start, end=end, target=target))
 
 
 
 #Alternative simpler implementation
 #Error prone though as an invalid target could make array go out of bound
 
-def binary_search_2(array: list, target):
+def binary_search_2(array: list, n: int, target):
+    n = len(array)
     low = 0
-    high = len(array)
+    high = n - 1
 
     while low <= high:
         mid = math.floor((low + high) / 2)
@@ -38,3 +39,5 @@ def binary_search_2(array: list, target):
         else:
             low = mid + 1
     return False
+
+print(binary_search_2(array=arr, n=8, target=9))

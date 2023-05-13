@@ -5,9 +5,9 @@ def merge_sort(arr):
         return arr
 
     mid_index = math.floor(len(arr) / 2)
-    left_arr = arr[0 : mid_index] 
+    left_arr = arr[0 : mid_index]
     right_arr = arr[mid_index : len(arr)]
-    
+
     return merge(merge_sort(left_arr), merge_sort(right_arr))
 
 def merge(left_arr: list, right_arr: list):

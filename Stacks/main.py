@@ -26,12 +26,37 @@ class LinkedList(object):
 
     def insert_first(self, new_element):
         "Insert new element as the head of the LinkedList"
-
-        pass
+        if self.head:
+            head_successor = self.head
+            self.head = new_element
+            new_element.next = head_successor
+        else:
+            self.head = new_element
+            new_element.next = None
 
     def delete_first(self):
         "Delete the first (head) element in the LinkedList as return it"
-        pass
+        if self.head:
+            old_head = self.head
+            if self.head.next:
+                new_head = self.head.next
+                self.head = new_head
+                old_head.next = None
+            else:
+                self.head = None
+            return old_head
+        return None
+
+    def show_elements(self):
+        current = self.head
+        if self.head:
+            while current.next:
+                print(current.value)
+                current = current.next
+            print(current.value)
+        else:
+            print("Empty list")
+
 
 class Stack(object):
     def __init__(self,top=None):
@@ -39,11 +64,11 @@ class Stack(object):
 
     def push(self, new_element):
         "Push (add) a new element onto the top of the stack"
-        pass
+        self.ll.insert_first(new_element)
 
     def pop(self):
         "Pop (remove) the first element off the top of the stack and return it"
-        pass
+        return self.ll.delete_first()
 
 # Test cases
 # Set up some Elements
